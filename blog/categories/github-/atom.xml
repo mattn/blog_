@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[ギッハブる日記]]></title>
-  <link href="http://mattn.github.com/blog/atom.xml" rel="self"/>
+  <title><![CDATA[Category: github, | ギッハブる日記]]></title>
+  <link href="http://mattn.github.com/blog/blog/categories/github-/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
   <updated>2011-10-18T18:35:58+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
@@ -18,10 +18,9 @@
     <link href="http://mattn.github.com/blog/2011/10/18/octopress-awesome/"/>
     <updated>2011-10-18T00:00:00+09:00</updated>
     <id>http://mattn.github.com/blog/2011/10/18/octopress-awesome</id>
-    <content type="html"><![CDATA[<p>自分で書いた記事だけど&#8230;</p>
+    <content type="html"><![CDATA[<p>自分で書いた記事だけど...</p>
 
-<blockquote><p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが&#8230;</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20111017205717.htm'>Githubとjekyllとoctopressで作る簡単でモダンなブログ</a></cite></footer></blockquote>
-
+<p><blockquote><p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが...</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20111017205717.htm'>Githubとjekyllとoctopressで作る簡単でモダンなブログ</a></cite></footer></blockquote></p>
 
 <p>を実際にoctopressで書くと、どんな感じかやってみた。
 まぁblosxomのテキストをmarkdownに書き直しただけなんですが。
@@ -31,32 +30,31 @@
 
 <p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが</p>
 
-<blockquote><p>GithubのユーザページでJekyllが使われる様になりました。 GitHub Pages Upgraded to Jekyll 0.5.0 - GitHub I just released Jek&#8230;</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20090409185248.htm'>Big Sky :: Jekyllで始める簡単ブログ</a></cite></footer></blockquote>
-
+<p><blockquote><p>GithubのユーザページでJekyllが使われる様になりました。 GitHub Pages Upgraded to Jekyll 0.5.0 - GitHub I just released Jek...</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20090409185248.htm'>Big Sky :: Jekyllで始める簡単ブログ</a></cite></footer></blockquote></p>
 
 <p>octopressというのを使うともっと簡単に出来る事が分かった。</p>
 
-<blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll , the blog aware static site generato&#8230;</p><footer><strong>Ocotopress</strong><cite><a href='http://octopress.org'>Octopress</a></cite></footer></blockquote>
+<p><blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll , the blog aware static site generato...</p><footer><strong>Ocotopress</strong><cite><a href='http://octopress.org'>Octopress</a></cite></footer></blockquote></p>
 
-
-
-
-<blockquote><p>What is Octopress? Octopress is Jekyll blogging at its finest. Octopress sports a clean responsive t&#8230;</p><footer><strong>image/octopress</strong><cite><a href='https://github.com/imathis/octopress'>Imathis/octopress - GitHub</a></cite></footer></blockquote>
-
+<p><blockquote><p>What is Octopress? Octopress is Jekyll blogging at its finest. Octopress sports a clean responsive t...</p><footer><strong>image/octopress</strong><cite><a href='https://github.com/imathis/octopress'>Imathis/octopress - GitHub</a></cite></footer></blockquote></p>
 
 <p>以下簡単な手順を示す。
 このgithubリポジトリは基本的に、1ブログに対して1つcloneする。cloneしたら</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># rake install</span></code></pre></td></tr></table></div></figure>
+<p>```</p>
 
+<h1>rake install</h1>
+
+<p>```</p>
 
 <p>する。octopressをシステムにインストールのではなく、このブログ用リポジトリにsassテーマをキャッシュさせる為の設定を行うだけなので安心してやって貰ってok。
 次にgithubにブログを作るのであれば</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+<p>```</p>
 
+<h1>rake setup_github_pages</h1>
+
+<p>```</p>
 
 <p>を実行し、読み取り書き込み権限のあるgit URLを貼り付けて完了。
 Windowsの場合はちょっとここで修正が必要で、<code>config.rb</code>とか<code>Rakefile</code>に変なパスが書かれているので直す。実際には<code>public/c:/path/to/public...</code>みたいなフルパスが重なっているはずなので<code>public...</code>に直せばok。
@@ -67,33 +65,27 @@ Windowsの場合はちょっとここで修正が必要で、<code>config.rb</co
 <p>試しに<code>source/_posts/2011-10-17-github-jekyll.mkd</code>というmarkdownのファイルを作ります。中身は以前ご紹介した内容と変わりませんが、ocotopressは幾らか拡張プラグインが入っているので色んな書き方が出来ます。
 例えばgist tagプラグインを使って</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: post
-</span><span class='line'>title: "githubとjekyllとoctopressで作るブログ"
-</span><span class='line'>date: 2011-07-03 5:59
-</span><span class='line'>comments: true
-</span><span class='line'>categories:
-</span><span class='line'>---
-</span><span class='line'>便利すぎる...
-</span><span class='line'>
-</span><span class='line'>{&#37; gist 1292428 &#37;}</span></code></pre></td></tr></table></div></figure>
+<h2>```</h2>
 
+<p>layout: post
+title: "githubとjekyllとoctopressで作るブログ"
+date: 2011-07-03 5:59
+comments: true</p>
+
+<h2>categories:</h2>
+
+<p>便利すぎる...</p>
+
+<p>{&#37; gist 1292428 &#37;}
+```</p>
 
 <p>こう書いて</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+<p>```</p>
 
+<h1>rake gen_deploy</h1>
+
+<p>```</p>
 
 <p>すると</p>
 
@@ -101,23 +93,19 @@ Windowsの場合はちょっとここで修正が必要で、<code>config.rb</co
 他にも、imageタグや、haml形式入力、html5 videoタグなど、色んなプラグインがあります。また、sassフォルダ内にあるsassファイルを弄れば簡単しかも柔軟なCSSを吐き出せます。
 なお、<code>_config.xml</code>を弄ってタイトルやサブタイトル、githubアカウント、twitterアカウントなんかを設定すると上述の様なサイトが簡単に出来上がります。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># ----------------------- #
-</span><span class='line'>#      Main Configs       #
-</span><span class='line'># ----------------------- #
-</span><span class='line'>
-</span><span class='line'>url: http://mattn.github.com/blog
-</span><span class='line'>title: "ギッハブる日記"
-</span><span class='line'>subtitle: ギッハブで作る開発日誌
-</span><span class='line'>author: mattn</span></code></pre></td></tr></table></div></figure>
+<p>```</p>
 
+<h1>-----------------------</h1>
+
+<h1>Main Configs</h1>
+
+<h1>-----------------------</h1>
+
+<p>url: http://mattn.github.com/blog
+title: "ギッハブる日記"
+subtitle: ギッハブで作る開発日誌
+author: mattn
+```</p>
 
 <p>気をつけておいて欲しいのは、github/jekyllはCGIで動いている訳じゃなくて、octopressが静的コンテンツを生成しているので、記事をアップする環境に依存する事。まぁここはbundleを使っているのでOSさえ変わらなければ大丈夫かと思います。Windowsからでも既述の様な修正を入れれば使えています。無料のgithubで簡単にしかもモダンなブログサイトを作りたい方は、一考してみてはどうでしょうか。</p>
 
@@ -125,7 +113,7 @@ Windowsの場合はちょっとここで修正が必要で、<code>config.rb</co
 
 <p>以上が本文、でこのmarkdownのソースは以下。</p>
 
-<div><script src='https://gist.github.com/1295049.js?file='></script>
+<p><div><script src='https://gist.github.com/1295049.js?file='></script>
 <noscript><pre><code>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが
 
 {% blockquote Big Sky http://mattn.kaoriya.net/software/lang/ruby/20090409185248.htm Big Sky :: Jekyllで始める簡単ブログ %}
@@ -203,29 +191,9 @@ author: mattn
 
 気をつけておいて欲しいのは、github/jekyllはCGIで動いている訳じゃなくて、octopressが静的コンテンツを生成しているので、記事をアップする環境に依存する事。まぁここはbundleを使っているのでOSさえ変わらなければ大丈夫かと思います。Windowsからでも既述の様な修正を入れれば使えています。無料のgithubで簡単にしかもモダンなブログサイトを作りたい方は、一考してみてはどうでしょうか。
 </code></pre></noscript></div>
-
+</p>
 
 <p>しかしgist tagプラグイン便利だ。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[githubとjekyllとoctopressで作るブログ]]></title>
-    <link href="http://mattn.github.com/blog/2011/10/17/github-jekyll/"/>
-    <updated>2011-10-17T00:00:00+09:00</updated>
-    <id>http://mattn.github.com/blog/2011/10/17/github-jekyll</id>
-    <content type="html"><![CDATA[<p>便利すぎる&#8230;</p>
-
-<div><script src='https://gist.github.com/1292428.js?file='></script>
-<noscript><pre><code>static const char*
-left_trim(const char* str) {
-  while (*str &amp;&amp; isspace(*str)) ++str;
-  return *str ? str : NULL;
-}
-</code></pre></noscript></div>
-
-
-
 ]]></content>
   </entry>
   
