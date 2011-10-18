@@ -4,7 +4,7 @@
   <title><![CDATA[ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-18T17:07:48+09:00</updated>
+  <updated>2011-10-18T17:13:39+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -12,5 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[githubとjekyllとoctopressで作るブログ]]></title>
+    <link href="http://mattn.github.com/blog/blog/2011/10/17/github-jekyll/"/>
+    <updated>2011-10-17T00:00:00+09:00</updated>
+    <id>http://mattn.github.com/blog/blog/2011/10/17/github-jekyll</id>
+    <content type="html"><![CDATA[<p>便利すぎる&#8230;</p>
+
+<p>{% gist 1292428 %}</p>
+]]></content>
+  </entry>
   
 </feed>
