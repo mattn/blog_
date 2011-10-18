@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[ギッハブる日記]]></title>
+  <link href="http://mattn.github.com/blog/atom.xml" rel="self"/>
+  <link href="http://mattn.github.com/blog/"/>
+  <updated>2011-10-18T17:07:48+09:00</updated>
+  <id>http://mattn.github.com/blog/</id>
+  <author>
+    <name><![CDATA[mattn]]></name>
+    <email><![CDATA[mattn.jp@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
