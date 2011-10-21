@@ -4,7 +4,7 @@
   <title><![CDATA[ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-21T20:45:36+09:00</updated>
+  <updated>2011-10-21T20:56:47+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -110,7 +110,7 @@
 
 
 <p>早く取り込んでよ。8月のだよ。で動かしてみたけど読み込めない。調べたら、python27.dllは<code>c:\python27\libs\python27.dll</code>でも<code>c:\python27\python27.dll</code>でもなく、<code>c:\windows\system32\python27.dll</code>なんて所に入ってた。f&#42;ckインストーラ！
-こういうのは動かすと必ず問題が起きるので<code>c:\windows\system32\python27.dll</code>にコピーした。
+こういうのは動かすと必ず問題が起きるので<code>c:\python27\libs\python27.dll</code>にコピーした。
 ようやくちゃんと動いた。</p>
 
 <p>快適。</p>
