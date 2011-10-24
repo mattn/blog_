@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-21T20:56:47+09:00</updated>
+  <updated>2011-10-24T16:49:47+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -12,6 +12,239 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[URLから本文を抜き出してblockquote作るプラグイン書いた]]></title>
+    <link href="http://mattn.github.com/blog/2011/10/24/urlref/"/>
+    <updated>2011-10-24T00:00:00+09:00</updated>
+    <id>http://mattn.github.com/blog/2011/10/24/urlref</id>
+    <content type="html"><![CDATA[<p>URLから自動で本文らしい所を抜き取って引用文にしてくれるプラグイン書いた。</p>
+
+<p><code>
+{&amp;#37; urlref https://github.com &amp;#37;}
+</code></p>
+
+<p>こう書くと</p>
+
+<p><blockquote>
+<a href="https://github.com ">GitHub - Social Coding</a>
+<p>jQuery, reddit, Sparkle, curl, Ruby on Rails, node.js, ClickToFlash, Erlang/OTP, CakePHP, Redis, and many more
+</p>
+<cite>https://github.com </cite>
+</blockquote>
+</p>
+
+<p>こんな感じ。楽チン。キャッシュ使って連続アクセスはしないようにした。</p>
+
+<p><code>
+{&amp;#37; urlref http://twitter.com/hasegawayosuke/ &amp;#37;}
+</code></p>
+
+<p>こんなのだと</p>
+
+<p><blockquote>
+<a href="http://twitter.com/hasegawayosuke/ ">Yosuke HASEGAWA (@hasegawayosuke)はTwitterを使っています</a>
+<p>
+</p>
+<cite>http://twitter.com/hasegawayosuke/ </cite>
+</blockquote>
+</p>
+
+<p>こんな感じだし、こんなのだと</p>
+
+<p><code>
+{&amp;#37; urlref https://twitter.com/hasegawayosuke/status/127346935911821312 &amp;#37;}
+</code></p>
+
+<p>こんなのだと</p>
+
+<p><blockquote>
+<a href="https://twitter.com/hasegawayosuke/status/127346935911821312 ">Twitter / Yosuke HASEGAWA: 昨日に引き続き肉食べ過ぎて満腹。さぁ、大阪に帰ろう。</a>
+<p>Twitter / Yosuke HASEGAWA: 昨日に引き続き肉食べ過ぎて満腹。さぁ、大阪に帰ろう。
+</p>
+<cite>https://twitter.com/hasegawayosuke/status/127346935911821312 </cite>
+</blockquote>
+</p>
+
+<p>焼肉食べたい。</p>
+
+<p><blockquote>
+<a href="http://octopress.org/">Octopress</a>
+<p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages. To start blogging with Jekyll, you have to write your own HTML templates, CS...
+</p>
+<cite>http://octopress.org/</cite>
+</blockquote>
+</p>
+
+<p>octopressにpull request送ったけど、取り入れられるかどうかは知らない。</p>
+
+<p>```ruby
+#</p>
+
+<h1>Author: Yasuhiro Matsumoto</h1>
+
+<h1>Include reference of text.</h1>
+
+<p>#</p>
+
+<h1>Outputs a string with a given URL</h1>
+
+<p>#</p>
+
+<h1><blockquote>
+<a href="http://google.com/search?q=pants ">301 Moved</a>
+<p>
+</p>
+<cite>http://google.com/search?q=pants </cite>
+</blockquote>
+</h1>
+
+<h1>...</h1>
+
+<h1><blockquote></h1>
+
+<h1><a href="http://google.com/search?q=pants">The Search For Bobby's Pants</p></h1>
+
+<h1><p>...</p></h1>
+
+<h1><cite><a href="http://google.com/search?q=pants">The Search For Bobby's Pants</a></cite></h1>
+
+<h1></blockquote></h1>
+
+<p>#
+require 'cgi'
+require 'digest/md5'
+require 'net/https'
+require 'uri'
+require 'iconv'</p>
+
+<p>module Jekyll</p>
+
+<p>  class UrlRef &lt; Liquid::Tag</p>
+
+<pre><code>def initialize(tag_name, args, tokens)
+  super
+  if pair = args.match(/(\S+)\s+([\d\.]+)/)
+    @url = pair[1].strip
+    @per = pair[2].strip.to_f
+  else
+    @url = args
+    @per = 0.1
+  end
+  @cache_disabled = false
+  @cache_folder   = File.expand_path "../.urlref-cache", File.dirname(__FILE__)
+  FileUtils.mkdir_p @cache_folder
+end
+
+def render(context)
+  if text = get_cached_text(@url, @per) || get_text_from_url(@url, @per)
+    lines = text.split(/\n/, 3)
+    title = CGI.escapeHTML lines[1]
+    body = CGI.escapeHTML lines[2]
+    &lt;&lt;-HTML
+</code></pre>
+
+<blockquote>
+<a href="#{@url}">#{title}</a>
+<p>#{body}</p>
+<cite>#{@url}</cite>
+</blockquote>
+
+
+<pre><code>    HTML
+  else
+    ""
+  end
+end
+
+def cache(url, text, per)
+  cache_file = get_cache_file_for url, per
+  File.open(cache_file, "w") do |io|
+    io.write text
+  end
+end
+
+def get_cached_text(url, per)
+  return nil if @cache_disabled
+  cache_file = get_cache_file_for url, per
+  File.read cache_file if File.exist? cache_file
+end
+
+def get_cache_file_for(url, per)
+  md5 = Digest::MD5.hexdigest url
+  File.join @cache_folder, "#{md5}-#{per}.cache"
+end
+
+def decode_html(s)
+  s = s.gsub(/&lt;[^&gt;]*?&gt;/, "")
+  s = s.gsub("&amp;#39;", "'")
+  s = s.gsub("&amp;#39;", "'")
+  s = s.gsub("&amp;quot;", "\"")
+  s = s.gsub("&amp;lt;", "&lt;")
+  s = s.gsub("&amp;gt;", "&gt;")
+  s = s.gsub("&amp;nbsp;", " ")
+  s = s.gsub("&amp;laquo;", "&lt;&lt;")
+  s = s.gsub("&amp;raquo;", "&gt;&gt;")
+  s = s.gsub("&amp;copy;", "(C)")
+  s = s.gsub("&amp;amp;", "&amp;")
+  s
+end
+
+def get_text_from_url(url, threshold_per)
+  raw_uri = URI.parse url
+  proxy = ENV['http_proxy']
+  if proxy
+    proxy_uri = URI.parse proxy
+    http = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new raw_uri.host, raw_uri.port
+  else
+    http = Net::HTTP.new raw_uri.host, raw_uri.port
+  end
+  if raw_uri.scheme == 'https'
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  end
+  request = Net::HTTP::Get.new raw_uri.request_uri
+  data = http.request request
+  data = data.body
+  data.gsub!(/&lt;!--.*?--&gt;/, '')
+  data.gsub!(/[\t\r\n]/, ' ')
+  title = data.match(/&lt;title[^&gt;]*?&gt;(.*?)&lt;\/title&gt;/i)
+  title = title ? title[1] : ''
+  title = decode_html title
+  data.gsub!(/&lt;(script|style)[^&gt;]*&gt;.*?&lt;\/\1&gt;/, '')
+  max = 0
+  body = ''
+  data.split(/(&lt;td[^&gt;]*?&gt;)|(&lt;\/td&gt;)|(&lt;div[^&gt;]*?&gt;)|(&lt;\/div&gt;)/).each do |html|
+    text = decode_html html.dup
+    text.strip!
+    text.gsub!(/[\s\t\r\n]+/, " ")
+    next if text == "" 
+    l = text.length
+    if l &gt; 100
+      per = l.to_f / html.length
+      if max &lt; l and per &lt; threshold_per
+        max = l
+        body = text.strip
+      end
+    end
+  end
+  if body.length &gt; 200
+    body = "#{body.slice(0, 200)}..."
+  end
+  text = "#{url}\n#{title}\n#{body}\n"
+  text = Iconv.new('UTF-8//IGNORE', 'UTF-8').iconv(text)
+  cache url, text, threshold_per unless @cache_disabled
+  text
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Liquid::Template.register_tag('urlref', Jekyll::UrlRef)
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「githubとjekyllとoctopressで作る簡単でモダンなブログ」をmarkdownで書き直してみた]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-21T20:56:47+09:00</updated>
+  <updated>2011-10-24T16:49:47+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -12,6 +12,358 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[URLから本文を抜き出してblockquote作るプラグイン書いた]]></title>
+    <link href="http://mattn.github.com/blog/2011/10/24/urlref/"/>
+    <updated>2011-10-24T00:00:00+09:00</updated>
+    <id>http://mattn.github.com/blog/2011/10/24/urlref</id>
+    <content type="html"><![CDATA[<p>URLから自動で本文らしい所を抜き取って引用文にしてくれるプラグイン書いた。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{&#37; urlref https://github.com &#37;}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こう書くと</p>
+
+<blockquote>
+<a href="https://github.com ">GitHub - Social Coding</a>
+<p>jQuery, reddit, Sparkle, curl, Ruby on Rails, node.js, ClickToFlash, Erlang/OTP, CakePHP, Redis, and many more
+</p>
+<cite>https://github.com </cite>
+</blockquote>
+
+
+<p>こんな感じ。楽チン。キャッシュ使って連続アクセスはしないようにした。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{&#37; urlref http://twitter.com/hasegawayosuke/ &#37;}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんなのだと</p>
+
+<blockquote>
+<a href="http://twitter.com/hasegawayosuke/ ">Yosuke HASEGAWA (@hasegawayosuke)はTwitterを使っています</a>
+<p>
+</p>
+<cite>http://twitter.com/hasegawayosuke/ </cite>
+</blockquote>
+
+
+<p>こんな感じだし、こんなのだと</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{&#37; urlref https://twitter.com/hasegawayosuke/status/127346935911821312 &#37;}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんなのだと</p>
+
+<blockquote>
+<a href="https://twitter.com/hasegawayosuke/status/127346935911821312 ">Twitter / Yosuke HASEGAWA: 昨日に引き続き肉食べ過ぎて満腹。さぁ、大阪に帰ろう。</a>
+<p>Twitter / Yosuke HASEGAWA: 昨日に引き続き肉食べ過ぎて満腹。さぁ、大阪に帰ろう。
+</p>
+<cite>https://twitter.com/hasegawayosuke/status/127346935911821312 </cite>
+</blockquote>
+
+
+<p>焼肉食べたい。</p>
+
+<blockquote>
+<a href="http://octopress.org/">Octopress</a>
+<p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages. To start blogging with Jekyll, you have to write your own HTML templates, CS&#8230;
+</p>
+<cite>http://octopress.org/</cite>
+</blockquote>
+
+
+<p>octopressにpull request送ったけど、取り入れられるかどうかは知らない。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="c1"># Author: Yasuhiro Matsumoto</span>
+</span><span class='line'><span class="c1"># Include reference of text.</span>
+</span><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="c1"># Outputs a string with a given URL</span>
+</span><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="c1">#   <blockquote>
+<a href="http://google.com/search?q=pants ">301 Moved</a>
+<p>
+</p>
+<cite>http://google.com/search?q=pants </cite>
+</blockquote>
+</span>
+</span><span class='line'><span class="c1">#   ...</span>
+</span><span class='line'><span class="c1">#   &lt;blockquote&gt;</span>
+</span><span class='line'><span class="c1">#     &lt;a href=&quot;http://google.com/search?q=pants&quot;&gt;The Search For Bobby&#39;s Pants&lt;/p&gt;</span>
+</span><span class='line'><span class="c1">#     &lt;p&gt;...&lt;/p&gt;</span>
+</span><span class='line'><span class="c1">#     &lt;cite&gt;&lt;a href=&quot;http://google.com/search?q=pants&quot;&gt;The Search For Bobby&#39;s Pants&lt;/a&gt;&lt;/cite&gt;</span>
+</span><span class='line'><span class="c1">#   &lt;/blockquote&gt;</span>
+</span><span class='line'><span class="c1">#</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;cgi&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;digest/md5&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/https&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;uri&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;iconv&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">module</span> <span class="nn">Jekyll</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">UrlRef</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">super</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">pair</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\S+)\s+([\d\.]+)/</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@url</span> <span class="o">=</span> <span class="n">pair</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">strip</span>
+</span><span class='line'>        <span class="vi">@per</span> <span class="o">=</span> <span class="n">pair</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">strip</span><span class="o">.</span><span class="n">to_f</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="vi">@url</span> <span class="o">=</span> <span class="n">args</span>
+</span><span class='line'>        <span class="vi">@per</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="vi">@cache_disabled</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'>      <span class="vi">@cache_folder</span>   <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span> <span class="s2">&quot;../.urlref-cache&quot;</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class='line'>      <span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span> <span class="vi">@cache_folder</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">text</span> <span class="o">=</span> <span class="n">get_cached_text</span><span class="p">(</span><span class="vi">@url</span><span class="p">,</span> <span class="vi">@per</span><span class="p">)</span> <span class="o">||</span> <span class="n">get_text_from_url</span><span class="p">(</span><span class="vi">@url</span><span class="p">,</span> <span class="vi">@per</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">/\n/</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">title</span> <span class="o">=</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escapeHTML</span> <span class="n">lines</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">body</span> <span class="o">=</span> <span class="no">CGI</span><span class="o">.</span><span class="n">escapeHTML</span> <span class="n">lines</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
+</span><span class='line'>        <span class="o">&lt;&lt;-</span><span class="no">HTML</span>
+</span><span class='line'><span class="sh">&lt;blockquote&gt;</span>
+</span><span class='line'><span class="sh">&lt;a href=&quot;#{@url}&quot;&gt;#{title}&lt;/a&gt;</span>
+</span><span class='line'><span class="sh">&lt;p&gt;#{body}&lt;/p&gt;</span>
+</span><span class='line'><span class="sh">&lt;cite&gt;#{@url}&lt;/cite&gt;</span>
+</span><span class='line'><span class="sh">&lt;/blockquote&gt;</span>
+</span><span class='line'><span class="no">        HTML</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">per</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">cache_file</span> <span class="o">=</span> <span class="n">get_cache_file_for</span> <span class="n">url</span><span class="p">,</span> <span class="n">per</span>
+</span><span class='line'>      <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">cache_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">io</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">io</span><span class="o">.</span><span class="n">write</span> <span class="n">text</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get_cached_text</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">per</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kp">nil</span> <span class="k">if</span> <span class="vi">@cache_disabled</span>
+</span><span class='line'>      <span class="n">cache_file</span> <span class="o">=</span> <span class="n">get_cache_file_for</span> <span class="n">url</span><span class="p">,</span> <span class="n">per</span>
+</span><span class='line'>      <span class="no">File</span><span class="o">.</span><span class="n">read</span> <span class="n">cache_file</span> <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span> <span class="n">cache_file</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get_cache_file_for</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">per</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">md5</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">.</span><span class="n">hexdigest</span> <span class="n">url</span>
+</span><span class='line'>      <span class="no">File</span><span class="o">.</span><span class="n">join</span> <span class="vi">@cache_folder</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">md5</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">per</span><span class="si">}</span><span class="s2">.cache&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">decode_html</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;[^&gt;]*?&gt;/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;nbsp;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;laquo;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&lt;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;raquo;&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&gt;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;copy;&quot;</span><span class="p">,</span> <span class="s2">&quot;(C)&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;&amp;amp;&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">s</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">get_text_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">threshold_per</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">raw_uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span> <span class="n">url</span>
+</span><span class='line'>      <span class="n">proxy</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;http_proxy&#39;</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">proxy</span>
+</span><span class='line'>        <span class="n">proxy_uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span> <span class="n">proxy</span>
+</span><span class='line'>        <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Proxy</span><span class="p">(</span><span class="n">proxy_uri</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">proxy_uri</span><span class="o">.</span><span class="n">port</span><span class="p">)</span><span class="o">.</span><span class="n">new</span> <span class="n">raw_uri</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">raw_uri</span><span class="o">.</span><span class="n">port</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">new</span> <span class="n">raw_uri</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">raw_uri</span><span class="o">.</span><span class="n">port</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">raw_uri</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span>
+</span><span class='line'>        <span class="n">http</span><span class="o">.</span><span class="n">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>        <span class="n">http</span><span class="o">.</span><span class="n">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="o">.</span><span class="n">new</span> <span class="n">raw_uri</span><span class="o">.</span><span class="n">request_uri</span>
+</span><span class='line'>      <span class="n">data</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span> <span class="n">request</span>
+</span><span class='line'>      <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">body</span>
+</span><span class='line'>      <span class="n">data</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr">/&lt;!--.*?--&gt;/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">data</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr">/[\t\r\n]/</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">title</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/&lt;title[^&gt;]*?&gt;(.*?)&lt;\/title&gt;/i</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="p">?</span> <span class="n">title</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
+</span><span class='line'>      <span class="n">title</span> <span class="o">=</span> <span class="n">decode_html</span> <span class="n">title</span>
+</span><span class='line'>      <span class="n">data</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr">/&lt;(script|style)[^&gt;]*&gt;.*?&lt;\/\1&gt;/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="n">body</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span class='line'>      <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">/(&lt;td[^&gt;]*?&gt;)|(&lt;\/td&gt;)|(&lt;div[^&gt;]*?&gt;)|(&lt;\/div&gt;)/</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">html</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">text</span> <span class="o">=</span> <span class="n">decode_html</span> <span class="n">html</span><span class="o">.</span><span class="n">dup</span>
+</span><span class='line'>        <span class="n">text</span><span class="o">.</span><span class="n">strip!</span>
+</span><span class='line'>        <span class="n">text</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr">/[\s\t\r\n]+/</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">next</span> <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>        <span class="n">l</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="mi">100</span>
+</span><span class='line'>          <span class="n">per</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">html</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">max</span> <span class="o">&lt;</span> <span class="n">l</span> <span class="ow">and</span> <span class="n">per</span> <span class="o">&lt;</span> <span class="n">threshold_per</span>
+</span><span class='line'>            <span class="n">max</span> <span class="o">=</span> <span class="n">l</span>
+</span><span class='line'>            <span class="n">body</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">200</span>
+</span><span class='line'>        <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">body</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span><span class="si">}</span><span class="s2">...&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="se">\n</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="si">#{</span><span class="n">body</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="n">text</span> <span class="o">=</span> <span class="no">Iconv</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;UTF-8//IGNORE&#39;</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iconv</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">cache</span> <span class="n">url</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">threshold_per</span> <span class="k">unless</span> <span class="vi">@cache_disabled</span>
+</span><span class='line'>      <span class="n">text</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_tag</span><span class="p">(</span><span class="s1">&#39;urlref&#39;</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">UrlRef</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[octopressのコードブロックでutf-8が使えないのが直った]]></title>
