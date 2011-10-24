@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jekyll, | ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/blog/categories/jekyll-/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-24T16:49:47+09:00</updated>
+  <updated>2011-10-24T16:50:28+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -74,7 +74,7 @@ C:/Ruby192/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:75:
 
 <p>どうやらpygmentsが使うpythonのdllが見つからないっぽい。でrubypythonを見てみると、ちゃんとpython27.dllのパスを探せてない。パッチ書こうと思ったら既にあった</p>
 
-<p><blockquote><p>Prefix. I have never written a line of Ruby before so please fix/improve where needed.<br/>Super basic support, this doesn't clean up the errors from the Windows Python not liking the order of quote when being called. It wants " then '<br/>This does allow windows users to get by.<br/>I'm not very familiar with Bitbucket or Hg so I hope you don't mind my use of GitHub and Git.</p><footer><strong>github</strong><cite><a href='https://github.com/halostatue/rubypython/pull/1'>Super Basic Support for Windows Python</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x2336478></p>
 
 <p>早く取り込んでよ。8月のだよ。で動かしてみたけど読み込めない。調べたら、python27.dllは<code>c:\python27\libs\python27.dll</code>でも<code>c:\python27\python27.dll</code>でもなく、<code>c:\windows\system32\python27.dll</code>なんて所に入ってた。f&#42;ckインストーラ！
 こういうのは動かすと必ず問題が起きるので<code>c:\python27\libs\python27.dll</code>にコピーした。
@@ -91,7 +91,7 @@ C:/Ruby192/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:75:
     <id>http://mattn.github.com/blog/2011/10/18/octopress-awesome</id>
     <content type="html"><![CDATA[<p>自分で書いた記事だけど...</p>
 
-<p><blockquote><p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが...</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20111017205717.htm'>Githubとjekyllとoctopressで作る簡単でモダンなブログ</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x23361a8></p>
 
 <p>を実際にoctopressで書くと、どんな感じかやってみた。
 まぁblosxomのテキストをmarkdownに書き直しただけなんですが。
@@ -101,13 +101,13 @@ C:/Ruby192/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:75:
 
 <p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが</p>
 
-<p><blockquote><p>GithubのユーザページでJekyllが使われる様になりました。 GitHub Pages Upgraded to Jekyll 0.5.0 - GitHub I just released Jek...</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20090409185248.htm'>Big Sky :: Jekyllで始める簡単ブログ</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x2335e48></p>
 
 <p>octopressというのを使うともっと簡単に出来る事が分かった。</p>
 
-<p><blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll , the blog aware static site generato...</p><footer><strong>Ocotopress</strong><cite><a href='http://octopress.org'>Octopress</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x2335b00></p>
 
-<p><blockquote><p>What is Octopress? Octopress is Jekyll blogging at its finest. Octopress sports a clean responsive t...</p><footer><strong>image/octopress</strong><cite><a href='https://github.com/imathis/octopress'>Imathis/octopress - GitHub</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x23357b8></p>
 
 <p>以下簡単な手順を示す。
 このgithubリポジトリは基本的に、1ブログに対して1つcloneする。cloneしたら</p>

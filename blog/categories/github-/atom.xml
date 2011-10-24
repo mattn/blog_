@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github, | ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/blog/categories/github-/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-24T16:49:47+09:00</updated>
+  <updated>2011-10-24T16:50:28+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -20,7 +20,7 @@
     <id>http://mattn.github.com/blog/2011/10/18/octopress-awesome</id>
     <content type="html"><![CDATA[<p>自分で書いた記事だけど...</p>
 
-<p><blockquote><p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが...</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20111017205717.htm'>Githubとjekyllとoctopressで作る簡単でモダンなブログ</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x232eba0></p>
 
 <p>を実際にoctopressで書くと、どんな感じかやってみた。
 まぁblosxomのテキストをmarkdownに書き直しただけなんですが。
@@ -30,13 +30,13 @@
 
 <p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが</p>
 
-<p><blockquote><p>GithubのユーザページでJekyllが使われる様になりました。 GitHub Pages Upgraded to Jekyll 0.5.0 - GitHub I just released Jek...</p><footer><strong>Big Sky</strong><cite><a href='http://mattn.kaoriya.net/software/lang/ruby/20090409185248.htm'>Big Sky :: Jekyllで始める簡単ブログ</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x232e8b8></p>
 
 <p>octopressというのを使うともっと簡単に出来る事が分かった。</p>
 
-<p><blockquote><p>Octopress is a framework designed by Brandon Mathis for Jekyll , the blog aware static site generato...</p><footer><strong>Ocotopress</strong><cite><a href='http://octopress.org'>Octopress</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x232e588></p>
 
-<p><blockquote><p>What is Octopress? Octopress is Jekyll blogging at its finest. Octopress sports a clean responsive t...</p><footer><strong>image/octopress</strong><cite><a href='https://github.com/imathis/octopress'>Imathis/octopress - GitHub</a></cite></footer></blockquote></p>
+<p>Liquid error: undefined method `map' for #<String:0x232e198></p>
 
 <p>以下簡単な手順を示す。
 このgithubリポジトリは基本的に、1ブログに対して1つcloneする。cloneしたら</p>
