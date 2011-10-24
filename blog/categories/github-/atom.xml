@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github, | ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/blog/categories/github-/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-24T16:52:30+09:00</updated>
+  <updated>2011-10-24T17:26:40+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -20,7 +20,7 @@
     <id>http://mattn.github.com/blog/2011/10/18/octopress-awesome</id>
     <content type="html"><![CDATA[<p>自分で書いた記事だけど...</p>
 
-<p>Liquid error: undefined method `map' for #<String:0x2302680></p>
+<p>Liquid error: undefined method `map' for #<String:0x2368758></p>
 
 <p>を実際にoctopressで書くと、どんな感じかやってみた。
 まぁblosxomのテキストをmarkdownに書き直しただけなんですが。
@@ -30,13 +30,13 @@
 
 <p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが</p>
 
-<p>Liquid error: undefined method `map' for #<String:0x23020e0></p>
+<p>Liquid error: undefined method `map' for #<String:0x2368470></p>
 
 <p>octopressというのを使うともっと簡単に出来る事が分かった。</p>
 
-<p>Liquid error: undefined method `map' for #<String:0x2301c78></p>
+<p>Liquid error: undefined method `map' for #<String:0x2368128></p>
 
-<p>Liquid error: undefined method `map' for #<String:0x2301990></p>
+<p>Liquid error: undefined method `map' for #<String:0x2360d48></p>
 
 <p>以下簡単な手順を示す。
 このgithubリポジトリは基本的に、1ブログに対して1つcloneする。cloneしたら</p>
