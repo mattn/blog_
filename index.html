@@ -550,7 +550,7 @@
 
 <p>どうやらpygmentsが使うpythonのdllが見つからないっぽい。でrubypythonを見てみると、ちゃんとpython27.dllのパスを探せてない。パッチ書こうと思ったら既にあった</p>
 
-<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x235fed8></p>
+<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x221d600></p>
 
 <p>早く取り込んでよ。8月のだよ。で動かしてみたけど読み込めない。調べたら、python27.dllは<code>c:\python27\libs\python27.dll</code>でも<code>c:\python27\python27.dll</code>でもなく、<code>c:\windows\system32\python27.dll</code>なんて所に入ってた。f&#42;ckインストーラ！
 こういうのは動かすと必ず問題が起きるので<code>c:\python27\libs\python27.dll</code>にコピーした。
@@ -594,7 +594,7 @@
 
   <div class="entry-content"><p>自分で書いた記事だけど&#8230;</p>
 
-<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x2381ef8></p>
+<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x2238408></p>
 
 <p>を実際にoctopressで書くと、どんな感じかやってみた。
 まぁblosxomのテキストをmarkdownに書き直しただけなんですが。
@@ -604,13 +604,13 @@
 
 <p>以前、「jekyllで始める簡単ブログ」という記事を書いたのですが</p>
 
-<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x2381b80></p>
+<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x22380d8></p>
 
 <p>octopressというのを使うともっと簡単に出来る事が分かった。</p>
 
-<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x23817f0></p>
+<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x2237df0></p>
 
-<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x2381448></p>
+<p>Liquid error: undefined method `map&#8217; for #&lt;String:0x2237ac0></p>
 
 <p>以下簡単な手順を示す。
 このgithubリポジトリは基本的に、1ブログに対して1つcloneする。cloneしたら</p>
@@ -907,6 +907,13 @@ left_trim(const char* str) {
   
 </section>
 
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/mattn.jp?count=10&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/mattn.jp">My Delicious Bookmarks &raquo;</a></p>
+</section>
 
 
 

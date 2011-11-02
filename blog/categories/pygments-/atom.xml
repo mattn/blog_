@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pygments, | ギッハブる日記]]></title>
   <link href="http://mattn.github.com/blog/blog/categories/pygments-/atom.xml" rel="self"/>
   <link href="http://mattn.github.com/blog/"/>
-  <updated>2011-10-24T17:26:40+09:00</updated>
+  <updated>2011-11-02T12:40:16+09:00</updated>
   <id>http://mattn.github.com/blog/</id>
   <author>
     <name><![CDATA[mattn]]></name>
@@ -74,7 +74,7 @@ C:/Ruby192/lib/ruby/gems/1.9.1/gems/ffi-1.0.9-x86-mingw32/lib/ffi/library.rb:75:
 
 <p>どうやらpygmentsが使うpythonのdllが見つからないっぽい。でrubypythonを見てみると、ちゃんとpython27.dllのパスを探せてない。パッチ書こうと思ったら既にあった</p>
 
-<p>Liquid error: undefined method `map' for #<String:0x23580d8></p>
+<p>Liquid error: undefined method `map' for #<String:0x30e3490></p>
 
 <p>早く取り込んでよ。8月のだよ。で動かしてみたけど読み込めない。調べたら、python27.dllは<code>c:\python27\libs\python27.dll</code>でも<code>c:\python27\python27.dll</code>でもなく、<code>c:\windows\system32\python27.dll</code>なんて所に入ってた。f&#42;ckインストーラ！
 こういうのは動かすと必ず問題が起きるので<code>c:\python27\libs\python27.dll</code>にコピーした。
